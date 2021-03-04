@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18 de fev de 2021, 17:49:09
+    Author     : fabio
+*/
+
+.blue{
+    background: rgb(15,4,239);
+}
+.green{
+    background: rgb(18,220,166);
+}
+.yellow{
+    background: rgb(223,212,134);
+}
+.gray{
+    background: rgb(59,87,102);
+}
+.red{
+    background: #ff3300;
+}
+.pink{
+    background: #FF1493;
+}
+.orange{
+    background: rgb(239,189,4);
+}
+
+

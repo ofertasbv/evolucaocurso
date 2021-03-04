@@ -1,0 +1,98 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="navbar">
+                    <div class="col-e">
+                        <div class="form-row">
+                            <h4>Lista de permissões</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <div class="form-row" style="text-align: right;">
+                            <a class="button-default" th:href="@{/permissoes/nova}" role="button">
+                                <i class="fas fa-plus-circle"></i> novo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="alert  alert-success" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span th:text="${mensagem}"></span>
+                </div>
+            </div>
+
+            <div class="card-pesquisa">
+                <form method="GET" th:object="${permissaoFilter}" autocomplete="off">
+                    <div class="form-row">
+                        <label for="descricao" style="color: white;">Pesquisa por descricao</label>
+                        <input autofocus="autofocus"
+                               type="text" th:field="*{descricao}" placeholder="Pesquisa por descricao"/>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <div class="form-group  col-sm-4">
+                                <button class="button-success" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-form">
+                <div class="col-c">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descrição</th>
+                                <th>Visualizar</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c: ${pagina.conteudo}">
+                                <td th:text="${c.id}"></td>
+                                <td th:text="${c.descricao}"></td>
+                                <td>
+                                    <a title="Visualizar" th:href="@{/permissoes/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-search"></i>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a title="Editar" th:href="@{/permissoes/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr th:if="${pagina.vazia}">
+                                <td colspan="7">Nenhuma dados encontrados</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <evolucao:pagination page="${pagina}"/>
+        </section>
+    </body>
+</html>

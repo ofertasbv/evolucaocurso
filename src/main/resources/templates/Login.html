@@ -1,0 +1,78 @@
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <title>Evolução - login</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" href="/images/logo.png" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_home.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_form.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_icons.css}"/>
+        <script th:src="@{/layout/js/all.js}"></script>
+    </head>
+    <body>
+
+        <div th:replace="layout/fragments/topo :: navbar"></div>
+
+        <div class="conteudo-login">
+            <div class="conteudo-login-esquerdo">
+                <div class="card-login">
+                    <div style="padding: 5%; border: 0px solid black;text-align: center;">
+                        <h1 style="">SISTEMA DE CONTROLE E CONFIGURAÇÃO</h1>
+                    </div>
+
+                    <div style="padding: 5%; border: 0px solid black;text-align: center;">
+                        <p style="">SISTEMA DE CONTROLE E CONFIGURAÇÃO</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conteudo-login-direito">
+                <form th:action="@{/login}" method="POST" autocomplete="off">
+                    <div class="card-login">
+
+                        <div style="padding: 5%; border: 0px solid black;text-align: center;">
+                            <h4 style="font-size: 1.5rem;color: gray">Por favor, faça o login.</h4>
+                        </div>
+
+                        <div th:if="${#bools.isTrue(param.error)}" style="padding: 1%;">
+                            <p style="color: red;">O e-mail e/ou senha não conferem</p>
+                        </div>
+
+                        <div style="padding: 1%;">
+                            <label for="username">Email *</label>
+                            <input type="text" placeholder="Seu e-mail"
+                                   autofocus="autofocus" name="username" id="username"/>
+                        </div>
+
+                        <div style="padding: 1%;">
+                            <label for="password">Senha *</label>
+                            <input type="password" placeholder="Sua senha" 
+                                   autofocus="autofocus" name="password" id="password"/>
+                        </div>
+
+                        <div style="padding: 1%;">
+                            <button type="submit" class="button-login">Entrar</button>
+                        </div>
+
+                    </div>
+
+                    <div style="margin: 0% auto; border: 0px solid black;width: 75%; height: 50px;padding: 3%;">
+                        <div class="col-e" style="text-align: left;">
+                            <a th:href="@{/usuarios/recuperar_email}">
+                                Esqueceu a senha?
+                            </a>
+                        </div>
+                        <div class="col-d" style="text-align: right;">
+                            <a th:href="@{/usuarios/nova}">
+                                Cadastre-se
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

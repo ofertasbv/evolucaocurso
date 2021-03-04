@@ -1,0 +1,77 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="col-e">
+                    <div class="form-group">
+                        <h4>Lista de Matrículas da - [[${{turma.descricao}}]]</h4> 
+                    </div>
+                </div>
+
+                <div class="col-d">
+                    <div class="form-group" style="text-align: right;">
+                        <a class="button-default" th:href="@{/matriculas/nova}" role="button">
+                            <i class="fas fa-plus-circle"></i> novo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="col-c">
+                    <span th:text="${mensagem}" class="alert-success"/>
+                </div>
+            </div>
+
+            
+            <div class="card-form">
+                <div class="col-c">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descrição</th>
+                                <th>Status</th>
+                                <th>Nova</th>
+                                <th>Data Registro</th>
+                                <th>Curso</th>
+                                <th>Turma</th>
+                                <th>Aluno</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c: ${matriculas_turma}">
+                                <td th:text="${c.id}"></td>
+                                <td th:text="${c.descricao}"></td>
+                                <td th:text="${c.status}"></td>
+                                <td th:text="${c.novo}"></td>
+                                <td th:text="${c.dataRegistro}"></td>
+                                <td th:text="${c.turma.curso.nome}"></td>
+                                <td th:text="${c.turma.descricao}"></td>
+                                <td th:text="${c.pessoa.nome}"></td>
+                                <td>
+                                    <a title="Editar" th:href="@{/matriculas/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

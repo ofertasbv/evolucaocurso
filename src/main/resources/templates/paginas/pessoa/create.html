@@ -1,0 +1,102 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+
+            <div class="card-form">
+                <form method="POST" th:object="${pessoa}" th:action="@{/pessoas/nova}" autocomplete="off">
+                   
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="card-titulo">
+                        <h2>INSCRIÇÃO ONLINE</h2>
+                        <p>TUDO O QUE VOCÊ PRECISA PARA ENTRAR NO MERCADO PROFISSIONAL</p>
+                    </div>
+
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="form-row">
+                            <label for="nome">Nome completo *</label>
+                            <input type="text" class="form-control" id="nome" th:field="*{nome}"
+                                   evolucao:classforerror="nome"
+                                   placeholder="Entre com o Nome" autofocus="autofocus" >
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="col-e">
+                                <label for="telefone">Telefone (celular) *</label>
+                                <input type="text" class="form-control js-phone-number" id="telefone" th:field="*{telefone}"
+                                       evolucao:classforerror="telefone"
+                                       onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"
+                                       placeholder="(99)99999-9999" autofocus="autofocus">
+                            </div>
+
+                            <div class="col-d">
+                                <label for="cpf">Cpf *</label>
+                                <input type="text" class="form-control" id="cpf" th:field="*{cpf}" 
+                                       evolucao:classforerror="cpf"
+                                       onkeydown="javascript: fMasc(this, mCPF);" maxlength="14"
+                                       placeholder="000.000.000-00">
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <label for="dataNascimento">Data Nascimento *</label>
+                            <input type="date" class="form-control" id="dataNascimento" 
+                                   th:value="*{dataNascimento}" th:field="*{dataNascimento}"
+                                   evolucao:classforerror="dataNascimento"
+                                   placeholder="Entre com a Data de Nascimento" autofocus="autofocus">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="email">Email *</label>
+                            <input type="text" class="form-control" id="email" th:field="*{usuario.email}"
+                                   evolucao:classforerror="usuario.email"
+                                   placeholder="Email da pessoa" autofocus="autofocus">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-e">
+                                <label for="senha">Senha *</label>
+                                <input type="text" class="form-control" id="senha" th:field="*{usuario.senha}"  
+                                       evolucao:classforerror="usuario.senha"
+                                       placeholder="Senha da pessoa" autofocus="autofocus">
+                            </div>
+
+
+                            <div class="col-d">
+                                <label for="confirmaSenha">Confirmação de senha *</label>
+                                <input type="text" class="form-control" id="confirmaSenha" th:field="*{usuario.confirmaSenha}"
+                                       evolucao:classforerror="usuario.confirmaSenha"
+                                       placeholder="confirmaSenha">
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <button type="submit" class="button-success">Enviar formulário</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </body>
+</html>

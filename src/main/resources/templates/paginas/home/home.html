@@ -1,0 +1,130 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/home}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS PROFISSIONALIZANTES</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-home">
+
+            <div class="banner">
+                <a th:href="@{/}">
+                    <img alt="evolucão" th:src="@{/images/banner-01.png}" height="500" width="100%"/>
+                </a>
+            </div>
+
+            <div class="conteudo">
+                <div class="card-titulo">
+                    <h2>CURSOS</h2>
+                    <p>TUDO O QUE VOCÊ PRECISA PARA ENTRAR NO MERCADO PROFISSIONAL</p>
+                </div>
+
+                <div class="card-pesquisa">
+                    <form name="formPesquisa" method="GET" th:object="${cursoFilter}" th:action="@{/search}" autocomplete="off">
+                        <div class="form-row">
+                            <div class="coluna-esq">
+                                <div class="col-e">
+                                    <h2 style="color: white;">QUAL O CURSO QUE VOCÊ PROCURA</h2>
+                                </div>
+
+                                <div class="col-d">
+                                    <label for="foto" style="color: white;">Escolha o Curso:</label>
+                                    <input class="form-control" autofocus="autofocus"
+                                           type="text" id="nome" th:field="*{nome}" placeholder="Pesquisa por nome" aria-label="Search"/>
+                                </div>
+                            </div>
+
+                            <div class="coluna-dir">
+                                <div class="col-e">
+                                    <label for="categoria" style="color: white;">Escolha a Área</label>
+                                    <select id="categoria" class="form-select" th:field="*{categoria}"
+                                            onchange="document.forms['formPesquisa'].submit();">
+                                        <option value="">Selecione a categoria</option>
+                                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                                    </select> 
+                                </div>
+
+                                <div class="col-d">
+                                    <label for="modalidade" style="color: white;">Escolha a Modalidade:</label>
+                                    <select id="modalidade" class="form-select" th:field="*{modalidade}" 
+                                            onchange="document.forms['formPesquisa'].submit();">
+                                        <option value="">Selecione a modalidade</option>
+                                        <option th:each="m : ${modalidades}" th:value="${m}" th:text="${m.descricao}">PRESENCIAL</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-titulo">
+                    <h2>ÁREA DE CONHECIMENTOS</h2>
+                    <p>TUDO O QUE VOCÊ PRECISA PARA ENTRAR NO MERCADO PROFISSIONAL</p>
+                </div>
+
+                <div class="conteudo-card">
+                    <div class="card-categoria"  th:each="c: ${categorias}" >
+                        <a th:href="@{/search/?nome=(categoria=${c.id})}">
+                            <div class="card-categoria-img">
+                                <img alt="evolucão" th:src="@{/images/default.jpg}" height="215" width="100%"/>
+                            </div>
+
+                            <div class="card-categoria-rodape" th:style="'background:'+@{${c.color}}+';'">
+                                <p th:text="${c.nome}"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="card-titulo">
+                    <h2>CURSOS EM DESTAQUE</h2>
+                    <p>TUDO O QUE VOCÊ PRECISA PARA ENTRAR NO MERCADO PROFISSIONAL</p>
+                </div>
+
+
+                <div class="conteudo-card">
+                    <div class="card-produto" th:each="c: ${pagina.conteudo}">
+                        <a th:href="@{/usuarios/inscricao/{id}(id=${c.id})}">
+                            <div class="card-produto-img">
+                                <img alt="evolucão" th:src="@{/images/default.jpg}" height="250" width="100%"/>
+                            </div>
+
+                            <div class="card-produto-conteudo">
+                                <div class="card-produto-titulo">
+                                    <h4 th:text="${c.nome}"></h4>
+                                </div>
+                            </div>
+
+                            <div class="card-produto-rodape">
+                                <div style="height: 70px;width: 48%;float: left;border: 0px solid black;">
+                                    <h2 style="color: white;
+                                        font-size: 1.2rem;
+                                        font-weight: bold;">CURSO</h2>
+                                </div>
+                                <div style="height: 70px;width: 48%;float: right;border: 0px solid black;">
+                                    <h2 style="color: #2e3961;
+                                        font-size: 1.2rem;
+                                        font-weight: bold;">[[${c.modalidade.descricao}]]</h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div th:if="${pagina.vazia}">
+                    <p colspan="7">Nenhuma dados encontrados</p>
+                </div>
+
+                <evolucao:pagination page="${pagina}"/>
+            </div>
+        </section>
+    </body>
+</html>

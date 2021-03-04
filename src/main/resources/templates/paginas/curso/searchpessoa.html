@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}"
+      xmlns:brewer="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo">
+            <div class="container-fluid">
+
+                <div class="coluna-esq">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <h4 th:text="*{curso.nome}"></h4>
+                                <p th:text="*{curso.descricao}"></p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <h6>Descrição do curso</h6>
+                                <p th:text="*{curso.descricao}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="coluna-dir">
+                    <div class="container-fluid">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <h4>INSCRIÇÃO ONLINE</h4>
+                                    <span th:text="${mensagem}" class="alert-success"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="POST" th:object="${pessoa}" th:action="@{/pessoas/nova}" autocomplete="off">
+                            <span th:text="${mensagem}"/>
+                            <input type="hidden" th:field="*{id}"/>
+
+                            <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+                                <div th:each="detailedError : ${#fields.detailedErrors()}">
+                                    <span th:text="${detailedError.message}"></span>
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" th:field="*{usuario.email}" 
+                                           placeholder="Email da pessoa" required="true">
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="senha">Senha</label>
+                                    <input type="text" class="form-control" id="senha" th:field="*{usuario.senha}" 
+                                           placeholder="Senha da pessoa" required="true">
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="submit" class="btn btn-success">Enviar formulário</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

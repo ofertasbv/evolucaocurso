@@ -1,0 +1,74 @@
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="col-e">
+                    <div class="form-group">
+                        <h4>Lista de alunos</h4>
+                    </div>
+                </div>
+
+                <div class="col-d">
+                    <div class="form-group" style="text-align: right;">
+                        <a class="button-default" th:href="@{/pessoas/nova}" role="button">
+                            <i class="fas fa-plus-circle"></i> novo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="col-c">
+                    <span th:text="${mensagem}" class="alert-success"/>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="col-c">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>Cpf</th>
+                                <th>Nascimento</th>
+                                <th>Foto</th>
+                                <th>Email</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c: ${alunos}">
+                                <td th:text="${c.id}"></td>
+                                <td th:text="${c.nome}"></td>
+                                <td th:text="${c.telefone}"></td>
+                                <td th:text="${c.cpf}"></td>
+                                <td th:text="${c.dataNascimento}"></td>
+                                <td th:text="${c.foto}"></td>
+                                <td th:text="${c.usuario.email}"></td>
+                                <td>
+                                    <a title="Editar" th:href="@{/pessoas/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </body>
+</html>

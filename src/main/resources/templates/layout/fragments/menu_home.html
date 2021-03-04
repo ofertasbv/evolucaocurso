@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:brewer="http://brewer.algaworks.com">
+
+    <body>
+
+        <div th:fragment="menu-home">
+            <div class="menu-topo">
+                <div class="menu-conteudo">
+                    <ul class="menu-home">
+                        <li>
+                            <a th:href="@{/}" title="home" class="active">
+                                <i class="fas fa-home"></i> HOME
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/search}" title="cursos">
+                                <i class="fas fa-couch"></i> CURSOS
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/categorias/search}" title="categorias">
+                                <i class="fas fa-list"></i> ÁREA DE CONHECIMENTOS
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/contatos/nova}" tabindex="contato">
+                                <i class="fas fa-envelope"></i> CONTATO
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/sobre}" title="sobre">
+                                <i class="fas fa-info"></i> QUEM SOMOS
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/dashboard}" title="dashboard">
+                                <i class="fas fa-buromobelexperte"></i> DASHBOARD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

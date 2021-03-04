@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE TURMAS</h4>
+                </div>
+            </div>
+
+
+            <form method="POST" th:object="${turma}" th:action="@{/turmas/nova}" autocomplete="off">
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-row">
+                        <label for="curso">Curso</label>
+                        <select id="curso" th:field="*{curso}" class="form-select" evolucao:classforerror="curso">
+                            <option value="">Selecione curso </option>
+                            <option th:each="c : ${cursos}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="nome">Nome * (turma = nome do curso + ano corrente)</label>
+                        <input type="text" class="form-control" id="nome" th:field="*{nome}" 
+                               evolucao:classforerror="nome" autofocus="autofocus" 
+                               placeholder="Nome da turma">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="descricao">Descrição *</label>
+                        <textarea type="text" class="form-control" id="descricao" th:field="*{descricao}" 
+                                  evolucao:classforerror="descricao"
+                                  placeholder="descricao da turma"/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="number" id="quantidade" th:field="*{quantidade}"
+                               evolucao:classforerror="quantidade"
+                               placeholder="quantidade da turma">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="dataInicio">Data de início *</label>
+                            <input id="dataInicio" type="date"
+                                   th:field="*{dataInicio}"
+                                   evolucao:classforerror="dataInicio"
+                                   th:value="*{dataInicio}"/>
+                        </div>
+
+                        <div class="col-d">
+                            <label for="dataEncerramento">Data de encerramento *</label>
+                            <input id="dataEncerramento" type="date" 
+                                   th:field="*{dataEncerramento}" 
+                                   evolucao:classforerror="dataEncerramento"
+                                   th:value="*{dataEncerramento}"/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="status">Status *</label>
+                            <select id="status" class="form-select" th:field="*{status}" evolucao:classforerror="status">
+                                <option value="">Selecione o status</option>
+                                <option th:each="m : ${estatus}" th:value="${m}" th:text="${m.descricao}">ABERTA</option>
+                            </select>
+                        </div>
+
+                        <div class="col-d">
+                            <label for="turno">Turno *</label>
+                            <select id="turno" class="form-select" th:field="*{turno}" evolucao:classforerror="turno">
+                                <option value="">Selecione o turno</option>
+                                <option th:each="m : ${turnos}" th:value="${m}" th:text="${m.descricao}">DIURNO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <h4>Adicionar alunos</h4>
+                    <div class="form-row">
+                        <th:block th:each="p : ${usuarios}">
+                            <div class="checkbox  checkbox-inline"> 
+                                <input type="checkbox" th:value="${p.id}" th:field="*{usuarios}"/>
+                                <label th:for="${#ids.prev('usuarios')}" th:text="${p.nome}">Administrador</label>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+
+
+                <div class="card-form">
+                    <h4>Configurações do sistema</h4>
+                    <div class="form-row">
+                        <input id="novo" type="checkbox" class="form-check-input" th:field="*{novo}" />
+                        <label class="form-check-label" for="novo">Turma nova</label>
+                    </div>
+                </div>
+
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+                </div>
+            </form>
+
+        </section>
+    </body>
+</html>

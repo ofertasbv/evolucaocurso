@@ -1,0 +1,140 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>LISTA DE CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="navbar">
+                    <div class="col-e">
+                        <div class="form-row">
+                            <h4>Lista de cursos</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <div class="form-row" style="text-align: right;">
+                            <a class="button-default" th:href="@{/cursos/nova}" role="button">
+                                <i class="fas fa-plus-circle"></i> novo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="alert  alert-success" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span th:text="${mensagem}"></span>
+                </div>
+            </div>
+
+            <div class="card-pesquisa">
+                <form method="GET" th:object="${cursoFilter}" autocomplete="off">
+                    <div class="form-row">
+                        <label for="nome" style="color: white;">Pesquisa por nome de curso</label>
+                        <input class="form-control" autofocus="autofocus"
+                               type="text" id="nome" th:field="*{nome}" autocomplete="off"
+                               placeholder="Pesquisa por nome" aria-label="Search"/>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="categoria" style="color: white;">Pesquisa por categoria</label>
+                            <select id="categoria" class="form-select" th:field="*{categoria}">
+                                <option value="">Selecione a categoria</option>
+                                <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                            </select> 
+                        </div>
+
+                        <div class="col-d">
+                            <label for="modalidade" style="color: white;">Modalidade *</label>
+                            <select id="modalidade" class="form-select" th:field="*{modalidade}" evolucao:classforerror="modalidade">
+                                <option value="">Selecione a modalidade</option>
+                                <option th:each="m : ${modalidades}" th:value="${m}" th:text="${m.descricao}">PRESENCIAL</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <div class="form-group  col-sm-4">
+                                <button class="button-success" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="card-form">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <evolucao:order page="${pagina}" field="id" text="Id"/>
+                            </th>
+                            <th>Nome</th>
+                            <th>Foto</th>
+                            <th>Valor</th>
+                            <th>Modalidade</th>
+                            <th>Categoria</th>
+                            <th>Status</th>
+                            <th>Novo</th>
+                            <th>Destaque</th>
+                            <th>Visualizar</th>
+                            <th>Editar</th>
+                            <th>Turmas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c: ${pagina.conteudo}">
+                            <td th:text="${c.id}"></td>
+                            <td th:text="${c.nome}"></td>
+                            <td th:text="${c.foto}"></td>
+                            <td th:text="${c.valor}"></td>
+                            <td th:text="${c.modalidade}"></td>
+                            <td th:text="${c.categoria.nome}"></td>
+                            <td th:text="${c.status}" th:style="${c.status} == true ? 'background: #00cc99' : 'background: #FF6347'">></td>
+                            <td th:text="${c.novo}" th:style="${c.novo} == true ? 'background: #00cc99' : 'background: #FF6347'">></td>
+                            <td th:text="${c.destaque}" th:style="${c.novo} == true ? 'background: #00cc99' : 'background: #FF6347'">></td>
+                            <td>
+                                <a title="Visualizar" th:href="@{/cursos/view/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a title="Editar" th:href="@{/cursos/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a title="Turmas" th:href="@{/turmas/?nome=(curso=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-list"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr th:if="${pagina.vazia}" style="text-align: center;">
+                            <td colspan="7">Nenhuma dados encontrados</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <evolucao:pagination page="${pagina}"/>
+
+        </section>
+    </body>
+</html>

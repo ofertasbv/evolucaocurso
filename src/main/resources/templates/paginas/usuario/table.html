@@ -1,0 +1,120 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:brewer="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="navbar">
+                    <div class="col-e">
+                        <div class="form-row">
+                            <h4>Lista de usuários</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <div class="form-row" style="text-align: right;">
+                            <a class="button-default" th:href="@{/usuarios/nova}" role="button">
+                                <i class="fas fa-plus-circle"></i> novo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="alert  alert-success" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span th:text="${mensagem}"></span>
+                </div>
+            </div>
+
+
+            <div class="card-pesquisa">
+                <form method="GET" th:object="${usuarioFilter}" autocomplete="off">
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="nome" style="color: white;">Pesquisa por nome</label>
+                            <input autofocus="autofocus"
+                                   type="text" th:field="*{nome}" placeholder="Pesquisa por nome"/>
+                        </div>
+
+                        <div class="col-d">
+                            <label for="cpf" style="color: white;">Pesquisa por cpf</label>
+                            <input autofocus="autofocus"
+                                   type="text" th:field="*{cpf}" 
+                                   onkeydown="javascript: fMasc(this, mCPF);" maxlength="14"
+                                   placeholder="000.000.000-00">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <div class="form-group  col-sm-4">
+                                <button class="button-success" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-form">
+                <div class="col-c">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"/></th>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Telefone</th>
+                                <th>Cpf</th>
+                                <th>Registro</th>
+                                <th>Nascimento</th>
+                                <th>Visualizar</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c: ${pagina.conteudo}">
+                                <td><input type="checkbox"/></td>
+                                <td th:text="${c.id}"></td>
+                                <td th:text="${c.nome}"></td>
+                                <td th:text="${c.telefone}"></td>
+                                <td th:text="${c.cpf}"></td>
+                                <td th:text="${c.dataRegistro}"></td>
+                                <td th:text="${c.dataNascimento}"></td>
+                                <td>
+                                    <a title="Visualizar" th:href="@{/usuarios/view/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-search"></i>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a title="Editar" th:href="@{/usuarios/{id}(id=${c.id})}" class="button-warner"> 
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr th:if="${pagina.vazia}">
+                                <td colspan="7">Nenhuma dados encontrados</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <evolucao:pagination page="${pagina}"/>
+
+        </section>
+    </body>
+</html>

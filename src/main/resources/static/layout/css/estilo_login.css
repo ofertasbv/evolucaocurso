@@ -1,0 +1,109 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 de jan de 2021, 08:23:44
+    Author     : frc
+*/
+
+
+body{
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background: #f8f8f8;
+    font-family: 'Open Sans', sans-serif;
+}
+.topo{
+    height: 60px;
+    width: 100%;
+    background: rgb(91,49,167);
+    background: linear-gradient(90deg, rgba(91,49,167,0.835171568627451) 100%, rgba(102,82,255,1) 100%);
+}
+
+.topo-conteudo{
+    margin: 0 auto;
+    height: 60px;
+    width: 79%;
+    border: 0px solid black;
+    color: white;
+    font-weight: bold;
+}
+
+.topo-esquerdo{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 20%;
+    border: 0px solid black;
+    float: left;
+    text-align: left;
+    border: 0px solid blueviolet;
+}
+
+.topo-centro{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: auto;
+    width: 50%;
+    border: 0px solid black;
+    float: left;
+    margin-left: 1%;
+    text-align: center;
+}
+
+.topo-direita{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: auto;
+    width: 20%;
+    border: 0px solid black;
+    float: right;
+    text-align: right;
+}
+
+
+/* ======================= conteudo ======================= */
+.conteudo-login{
+    margin: 10% auto;
+    height: 600px;
+    width: 80%;
+    background: #f8f8f8;
+    border: 0px solid black;
+}
+
+.card-login{
+    margin: 20% auto;
+    height: 400px;
+    width: 80%;
+    border: 0px solid black;
+    padding: 4%;
+}
+
+.conteudo-login-esquerdo{
+    height: 600px;
+    width: 48%;
+    background: white;
+    border: 0px solid #d7cbcb;
+    border-radius: 5px;
+    float: left;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+
+.conteudo-login-direito{
+    height: 600px;
+    width: 48%;
+    background: white;
+    border: 0px solid #d7cbcb;
+    border-radius: 5px;
+    float: right;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}

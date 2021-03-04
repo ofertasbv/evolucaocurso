@@ -1,0 +1,140 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="navbar">
+                    <div class="col-e">
+                        <div class="form-row">
+                            <h4>Lista de matrículas</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <div class="form-row" style="text-align: right;">
+                            <a class="button-default" th:href="@{/matriculas/nova}" role="button">
+                                <i class="fas fa-plus-circle"></i> novo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <div class="alert  alert-success" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span th:text="${mensagem}"></span>
+                </div>
+            </div>
+
+            <div class="card-pesquisa">
+                <form method="GET" th:object="${matriculaFilter}" autocomplete="off">
+                    <div class="form-row">
+                        <label for="usuario" style="color: white;">Pesquisa por aluno</label>
+                        <select id="usuario" class="form-select" th:field="*{usuario}">
+                            <option value="">Selecione o aluno</option>
+                            <option th:each="c : ${usuarios}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                        </select>  
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="descricao" style="color: white;">Pesquisa por descrição</label>
+                            <input class="form-control" autofocus="autofocus"
+                                   type="text" id="descricao" th:field="*{descricao}" placeholder="Pesquisa por descrição" aria-label="Search"/>
+                        </div>
+
+                        <div class="col-d">
+                            <label for="turma" style="color: white;">Pesquisa por turma</label>
+                            <select id="turma" class="form-select" th:field="*{turma}">
+                                <option value="">Selecione a turma</option>
+                                <option th:each="c : ${turmas}" th:value="${c.id}" th:text="${c.descricao}">Pale lager</option>
+                            </select>  
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label style="color: white;">Pesquisa de</label>
+                            <input class="form-control" type="date" th:field="*{desde}" />
+                        </div>
+
+                        <div class="col-d">
+                            <label style="color: white;">Pesquisa até</label>
+                            <input class="form-control" type="date" th:field="*{ate}" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <div class="form-group  col-sm-4">
+                                <button class="button-success" type="submit">Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-form">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                            <th>Status</th>
+                            <th>Nova</th>
+                            <th>Data Registro</th>
+                            <th>Curso</th>
+                            <th>Turma</th>
+                            <th>Aluno</th>
+                            <th>Visualizar</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c: ${pagina.conteudo}">
+                            <td th:text="${c.id}"></td>
+                            <td th:text="${c.descricao}"></td>
+                            <td th:text="${c.status}" th:style="${c.status} == true ? 'background: #00cc99' : 'background: #FF6347'">></td>
+                            <td th:text="${c.novo}" th:style="${c.novo} == true ? 'background: #00cc99' : 'background: #FF6347'">></td>
+                            <td th:text="${c.dataRegistro}"></td>
+                            <td th:text="${c.turma.curso.nome}"></td>
+                            <td th:text="${c.turma.descricao}"></td>
+                            <td th:text="${c.usuario.nome}"></td>
+
+                            <td>
+                                <a title="Visualizar" th:href="@{/matriculas/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a title="Editar" th:href="@{/matriculas/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr th:if="${pagina.vazia}">
+                            <td colspan="7">Nenhuma dados encontrados</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <evolucao:pagination page="${pagina}"/>
+
+        </section>
+    </body>
+</html>

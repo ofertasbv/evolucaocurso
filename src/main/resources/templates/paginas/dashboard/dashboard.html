@@ -1,0 +1,273 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>DASHBOARD</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+
+            <div class="card-form">
+                <div class="card-titulo">
+                    <h2>PAINEL DE CONTROLE</h2>
+                    <p>DASHBOARD - ÁREA ADMINISTRATIVA DO SISTEMA E CONFIGURAÇÕES</p>
+                </div>
+            </div>
+
+
+            <div class="container-dashboard">
+
+                <div class="card-dashboard">
+                    <a th:href="@{/categorias}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid #D3D3D3; border-radius: 50%; height: auto;width: 20%; 
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;text-align: center;">
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Categorias</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo blue">
+                            <h4>[[${{totalCategorias}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/cursos}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-angular"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Cursos</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo green">
+                            <h4>[[${{totalCursos}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/turmas}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Turmas</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo yellow">
+                            <h4>[[${{totalTurmas}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/matriculas}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Matrículas</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo red">
+                            <h4>[[${{totalMatriculas}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/usuarios}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Usuários</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo pink">
+                            <h4>[[${{totalUsuarios}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/usuarios}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-user-astronaut"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Pessoas</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo gray">
+                            <h4>[[${{totalPessoas}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/grupos}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Grupos</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo green">
+                            <h4>[[${{totalGrupos}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/permissoes}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Permissões</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo blue">
+                            <h4>[[${{totalPermissoes}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="card-dashboard">
+                    <a th:href="@{/contatos}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Contatos</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo orange">
+                            <h4>[[${{totalContatos}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card-dashboard">
+                    <a th:href="@{/permissoes}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-location-arrow"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Endereços</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo yellow">
+                            <h4>[[${{totalPermissoes}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="card-dashboard">
+                    <a th:href="@{/permissoes}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-city"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Cidade</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo pink">
+                            <h4>[[${{totalPermissoes}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="card-dashboard">
+                    <a th:href="@{/permissoes}">
+                        <div class="card-dashboard-img">
+                            <div style="border: 0px solid black; height: auto;width: 20%;
+                                 float: left;padding-top: 3%;padding-bottom: 3%;font-size: 2rem;">
+                                <i class="fas fa-location-arrow"></i>
+                            </div>
+                            <div style="border: 0px solid black; height: 40px;width: 75%;float: right;
+                                 padding-top: 0%;padding-bottom: 1%;text-transform: capitalize;color: gray;
+                                 font-weight: bold;">
+                                <p>Estado</p>
+                            </div>
+                        </div>
+
+                        <div class="card-dashboard-conteudo yellow">
+                            <h4>[[${{totalPermissoes}}]]</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+    </body>
+</html>

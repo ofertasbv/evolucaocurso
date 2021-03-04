@@ -1,0 +1,82 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="navbar">
+                    <div class="col-e">
+                        <div class="form-row">
+                            <h4>Lista de grupos</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <div class="form-row" style="text-align: right;">
+                            <a class="button-default" th:href="@{/grupos/nova}" role="button">
+                                <i class="fas fa-plus-circle"></i> novo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-form">
+                <div class="alert  alert-success" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span th:text="${mensagem}"></span>
+                </div>
+            </div>
+
+
+            <div class="card-form">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                            <th>Visualizar</th>
+                            <th>Editar</th>
+                            <th>Permissões</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c: ${grupos}">
+                            <td th:text="${c.id}"></td>
+                            <td th:text="${c.nome}"></td>
+                            <td>
+                                <a title="Visualizar" th:href="@{/grupos/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a title="Editar" th:href="@{/grupos/{id}(id=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a title="Permissoes" th:href="@{/permissoes/?nome=(grupos=${c.id})}" class="button-warner"> 
+                                    <i class="fas fa-users-cog"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </body>
+</html>

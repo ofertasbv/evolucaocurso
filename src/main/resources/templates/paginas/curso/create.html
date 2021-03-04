@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        
+        <script type="text/javascript">
+             function calcular() {
+                var valor = document.getElementById("valor");
+                var desconto = document.getElementById("desconto");
+                var valorTotal = document.getElementById("valorTotal");
+
+                valorTotal.value = parseFloat(valor.value) - (parseFloat(valor.value) * parseFloat(desconto.value) / 100);
+                console.log(parseFloat(valorTotal.value));
+                return valorTotal.innerHTML;
+            }
+
+            function formatarMoeda() {
+                var elemento = document.getElementById('valor');
+                var valor = elemento.value;
+
+                valor = valor + '';
+                valor = parseInt(valor.replace(/[\D]+/g, ''));
+                valor = valor + '';
+                valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+                if (valor.length > 6) {
+                    valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+                }
+
+                elemento.value = valor;
+            }
+        </script>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE CURSOS</h4>
+                </div>
+            </div>
+
+            <form method="POST" th:object="${curso}" th:action="@{/cursos/nova}">
+
+                <input type="hidden" th:field="*{id}" readonly="readonly"/>
+
+                <input type="hidden" th:field="*{ementa.id}" readonly="readonly"/>
+
+                <div class="card-form">
+
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="nome">Nome *</label>
+                        <input id="nome" type="text" class="form-control" 
+                               evolucao:classforerror="nome"
+                               placeholder="Entre com o nome"
+                               th:field="*{nome}" autofocus="autofocus"/>
+                    </div>    
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="valor">Valor inícial *</label>
+                            <input id="valor" name="valor" type="text" 
+                                   evolucao:classforerror="valor" 
+                                   placeholder="Entre com o valor"
+                                   th:field="*{valor}" autofocus="autofocus" />
+                        </div>   
+
+                        <div class="col-d">
+                            <label for="desconto">Percentual de Desconto *</label>
+                            <input id="desconto" name="desconto" type="number" onkeyup="calcular();"
+                                   th:field="*{desconto}" autofocus="autofocus"  />
+                        </div>  
+                    </div>
+
+                    <div class="form-row">
+                        <label for="valorTotal">Total *</label>
+                        <input id="valorTotal" name="valorTotal" type="text" 
+                               th:field="*{valorTotal}" autofocus="autofocus"  />
+                    </div>   
+
+                    <div class="form-row">
+                        <label for="descricao">Descrição *</label>
+                        <textarea name="editor" 
+                                  evolucao:classforerror="descricao"
+                                  placeholder="Entre com a descrição"
+                                  th:field="*{descricao}"/>
+                    </div>                    
+
+                    <div class="form-row">
+                        <label for="descricaoEmenta">Ementa do curso *</label>
+                        <textarea type="text" placeholder="Entre com a ementa" th:field="*{ementa.descricaoEmenta}"></textarea>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="modalidade">Modalidade *</label>
+                            <select id="modalidade" class="form-select" th:field="*{modalidade}" evolucao:classforerror="modalidade">
+                                <option value="">Selecione a modalidade</option>
+                                <option th:each="m : ${modalidades}" th:value="${m}" th:text="${m.descricao}">PRESENCIAL</option>
+                            </select>
+                        </div>
+
+                        <div class="col-d">
+                            <label for="categoria">Categoria *</label>
+                            <select id="categoria" class="form-select" th:field="*{categoria}" evolucao:classforerror="categoria">
+                                <option value="">Selecione a categoria</option>
+                                <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="foto">Foto de capa do curso</label>
+                        <input type="file" class="form-control" id="foto"  th:field="*{foto}" placeholder="upload"/>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <h4>Configurações do sistema</h4>
+                    <div class="form-row">
+                        <input id="status" type="checkbox" class="form-check-input" th:field="*{status}"/>
+                        <label class="form-check-label" for="status">Curso ativo</label>
+                        <span style="padding: 1%;"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <input id="novo" type="checkbox" class="form-check-input" th:field="*{novo}" />
+                        <label class="form-check-label" for="novo">Curso novo</label>
+                        <span style="padding: 1%;"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <input id="destaque" type="checkbox" class="form-check-input" th:field="*{destaque}"/>
+                        <label class="form-check-label" for="destaque">Curso em destaque</label>
+                        <span style="padding: 1%;"></span>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

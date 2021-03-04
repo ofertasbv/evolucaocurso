@@ -1,0 +1,49 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE PERMISSÕES</h4>
+                </div>
+            </div>
+
+
+            <div class="card-form">
+                <form method="POST" th:object="${permissao}" th:action="@{/permissoes/nova}" autocomplete="off">
+
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-row">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control" id="descricao" th:field="*{descricao}" 
+                               evolucao:classforerror="descricao" autofocus="autofocus"
+                               style="text-transform: uppercase;"
+                               placeholder="Descrição da permissao" >
+                    </div>
+
+
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

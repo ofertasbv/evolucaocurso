@@ -1,0 +1,63 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE GRUPOS</h4>
+                </div>
+            </div>
+
+
+            <form method="POST" th:object="${grupo}" th:action="@{/grupos/nova}" autocomplete="off">
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-row">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" th:field="*{nome}" 
+                               evolucao:classforerror="nome" autofocus="autofocus"
+                               style="text-transform: uppercase;"
+                               placeholder="Nome do grupo" >
+                    </div>
+                </div>
+
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <h4>Adicionar permissões</h4>
+                        <th:block th:each="p : ${permissoes}">
+                            <div class="checkbox  checkbox-inline"> 
+                                <input type="checkbox" th:value="${p.id}" th:field="*{permissoes}"/>
+                                <label th:for="${#ids.prev('permissoes')}" th:text="${p.descricao}">Administrador</label>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </body>
+</html>

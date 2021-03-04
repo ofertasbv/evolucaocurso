@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:brewer="http://brewer.algaworks.com">
+
+    <body>
+
+        <div th:fragment="menu-dashboard">
+            <div class="menu-topo">
+                <div class="menu-conteudo">
+                    <ul class="menu-home">
+                        <li class="active">
+                            <a th:href="@{/}">
+                                <i class="fas fa-home"></i> home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/categorias}">
+                                <i class="fas fa-list"></i> categorias
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/cursos}">
+                                <i class="fas fa-list"></i> cursos
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a th:href="@{/usuarios}">
+                                <i class="fas fa-list"></i> usuários
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/grupos}">
+                                <i class="fas fa-list"></i> grupos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/permissoes}">
+                                <i class="fas fa-list"></i> permissões
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/turmas}">
+                                <i class="fas fa-list"></i> turmas
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/matriculas}">
+                                <i class="fas fa-list"></i> matrículas
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/contatos}" title="contato">
+                                <i class="fas fa-envelope"></i> CONTATO
+                            </a>
+                        </li>
+
+                        <li>
+                            <a th:href="@{/dashboard}" title="dashboard">
+                                <i class="fas fa-buromobelexperte"></i> DASHBOARD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </body>
+</html>

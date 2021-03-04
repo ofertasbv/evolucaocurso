@@ -1,0 +1,94 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+        <style type="text/css">
+            ul.lista-detalhes{
+                padding-left: 4%;
+                text-decoration: none;
+                font-weight: bold;
+                color: #708090;
+                font-size: 10pt;
+            }
+
+            ul.lista-detalhes > li{
+                display: inline-block;
+                padding-right: 1%;
+                text-transform: capitalize;
+                text-decoration: none;
+                color: #708090;
+            }
+
+            ul.lista-detalhes a {
+                color: #708090;
+                text-decoration: none;
+            }
+
+            ul.lista-detalhes a:hover{
+                color: #483D8B;
+                border-bottom: 3px solid gray;
+            }
+
+            ul.lista-detalhes > li > p{
+                color: #00008B;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo">
+
+            <div class="card-form">
+                <div class="form-row">
+                    <div class="col-e">
+                        <ul style=" font-weight: bold;color: #708090;">
+                            <li><h1>[[${contato.nome}]]</h1></li>
+                        </ul> 
+                    </div>
+
+                    <div class="col-d" style="text-align: right;">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-form">
+                <div class="form-row">
+                    <div class="col-e">
+                        <ul class="lista-detalhes">
+                            <li><h1>Email</h1></li>
+                            <li><p>[[${contato.email}]]</p></li>
+                        </ul>  
+
+                        <ul class="lista-detalhes">
+                            <li><h1>Descrição</h1></li>
+                            <li><p>[[${contato.descricao}]]</p></li>
+                        </ul> 
+                    </div>
+
+                    <div class="col-d">
+                        <ul class="lista-detalhes">
+                            <li><h1>Email</h1></li>
+                            <li><p>[[${contato.email}]]</p></li>
+                        </ul>  
+
+                        <ul class="lista-detalhes">
+                            <li><h1>Descrição</h1></li>
+                            <li><p>[[${contato.descricao}]]</p></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

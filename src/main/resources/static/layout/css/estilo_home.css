@@ -1,0 +1,704 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 de jan de 2021, 08:23:44
+    Author     : frc
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body{
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #F8F8FF;
+    opacity: 1;
+    font-family: "Open Sans",sans-serif;
+    font-family: Montserrat;
+    font-style: normal;
+}
+.topo{
+    height: 70px;
+    width: 100%;
+    background-color: #73c1a5;
+    border: 0px solid black;
+    elevation: 50deg;
+    font-size: 14pt;
+}
+
+.topo-conteudo{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    margin: 0 auto;
+    height: 70px;
+    width: 84%;
+    border: 0px solid black;
+    font-weight: bold;
+}
+
+.topo-esquerdo{
+    padding-top: 0%;
+    padding-bottom: 1%;
+    height: auto;
+    width: 6%;
+    border: 0px solid black;
+    float: left;
+    text-align: left;
+    font-size: 2rem;
+}
+
+.topo-centro{
+    margin-left: 1%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    height: auto;
+    width: 60%;
+    border: 0px solid black;
+    float: left;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.topo-direita{
+    padding-top: 0.8%;
+    padding-bottom: 0%;
+    padding-right: 0%;
+    height: auto;
+    width: 30%;
+    border: 0px solid black;
+    float: right;
+    text-align: right;
+}
+
+.topo-esquerdo a{
+    text-decoration: none;
+    color: white;
+}
+
+.topo-direita a{
+    text-decoration: none;
+    color: white;
+}
+
+.topo-esquerdo a:hover{
+    color: #f8f8f8;
+}
+
+.topo-direita a:hover{
+    color: #f8f8f8;
+}
+
+/* ======================= menu ======================= */
+
+.banner{
+    height: 500px;
+    width: 99%;
+    margin-top: 0px;
+    margin-bottom: 0%;
+    padding-top: 0%;
+    background-color: #73c1a5;
+    opacity: 0.8;
+}
+
+/* ======================= menu ======================= */
+.menu-topo{
+    height: 50px;
+    width: 100%;
+    background: white;
+    padding-top: 0.5%;
+    border-bottom: 1px solid #EEE;
+}
+
+.menu-conteudo{
+    margin: 0 auto;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 84%;
+    border: 0px solid black;
+    color: black;
+    text-align: left;
+    padding-left: 0%;
+}
+
+.menu-esquerdo{
+    margin: 0 auto;
+    height: auto;
+    width: 80%;
+    border: 0px solid black;
+    color: black;
+    float: left;
+    text-align: left;
+    padding-top: 0%;
+    padding-bottom: 0%;
+}
+
+.menu-direito{
+    margin: 0 auto;
+    height: auto;
+    width: 18%;
+    border: 0px solid black;
+    color: black;
+    float: right;
+    text-align: right;
+    padding-top: 0.5%;
+    padding-bottom: 0%;
+}
+
+/* ======================= conteudo ======================= */
+.conteudo-login{
+    margin: 1% auto;
+    height: 600px;
+    width: 85%;
+    background: #f8f8f8;
+    border: 0px solid black;
+}
+
+.card-login{
+    margin: 2% auto;
+    height: 400px;
+    width: 80%;
+    border: 0px solid black;
+    padding: 2%;
+}
+
+.conteudo-login-esquerdo{
+    height: 600px;
+    width: 48%;
+    background: white;
+    border: 0px solid #d7cbcb;
+    border-radius: 5px;
+    float: left;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+
+.conteudo-login-direito{
+    height: 600px;
+    width: 48%;
+    background: white;
+    border: 0px solid #d7cbcb;
+    border-radius: 5px;
+    float: right;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+
+/* ======================= conteudo ======================= */
+.conteudo{
+    margin: 0% auto;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 84%;
+    /*background: #F8F8FF;*/
+    border: 0px solid red;
+    padding: 0%;
+}
+
+.conteudo-card{
+    margin: 1% auto;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 100%;
+    background: transparent;
+    border: 0px solid black;
+    padding: 0%;
+}
+
+/* ======================= card categoria ======================= */
+
+.card-categoria{
+    height: auto;
+    width: 24.6%;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    float: left;
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+    margin-bottom: 1%;
+}
+
+.card-categoria-img img{
+    height: 215px;
+    width: 99.4%;
+    background: #DCDCDC;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+
+.card-categoria-rodape{
+    margin-top: -4px;
+    height: auto;
+    width: 100%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 0px solid transparent;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.card-categoria-rodape > p{
+    color: white;
+}
+
+.card-categoria-rodape:hover{
+    opacity: 1;
+}
+
+.card-categoria a{
+    color: white;
+    text-decoration: none;
+}
+/* ======================= card produto ======================= */
+
+.card-produto{
+    height: auto;
+    width: 24.6%;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    float: left;
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+    margin-bottom: 1%;
+}
+
+.card-produto-img{
+    height: 250px;
+    width: 99%;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+
+.card-produto-conteudo{
+    height: 150px;
+    width: 97%;
+    background-image: linear-gradient(to right, #D2B48C 0%, #DEB887 100%);
+    opacity: 0.8;
+    border: 0px solid black;
+    border-radius: 0px;
+    padding-left: 2%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.card-produto-titulo{
+    height: 150px;
+    width: 94%;
+    background: transparent;
+    border: 0px solid black;
+    border-radius: 0px;
+    padding: 2%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.card-produto-rodape{
+    height: 50px;
+    width: 99%;
+    background: #DB7093;
+    opacity: 0.8;
+    border: 0px solid #DCDCDC;
+    border-radius: 0px;
+    padding: 0%;
+    text-align: center;
+}
+
+.card-produto-titulo > h4{
+    color: #F8F8FF;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.card-produto-rodape > h2{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-produto-rodape > h4{
+    color: #708090;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-produto-modalidade > h5{
+    color: gray;
+}
+
+.card-produto a{
+    text-decoration: none;
+}
+
+/* ======================= card card-dashboard ======================= */
+.container-dashboard{
+    border: 0px solid #DCDCDC;
+    margin-left: 2px;
+    height: auto;
+    min-height: 100%; 
+    overflow: hidden;
+    width: 100%
+}
+.card-dashboard{
+    height: auto;
+    width: 24.8%;
+    border: 0px solid black;
+    border-radius: 0px;
+    float: left;
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+    margin-bottom: 2%;
+}
+
+.card-dashboard-img{
+    height: 50px;
+    width: 92%;
+    background: #EEE;
+    border: 0px solid green;
+    border-radius: 0px;
+    text-align: left;
+    padding: 4%;
+}
+
+.card-dashboard-img > i{
+    font-size: 1rem;
+    color: white;
+}
+
+.card-dashboard-conteudo{
+    height: 70px;
+    width: 92%;
+    border: 0px solid red;
+    border-radius: 0px;
+    padding: 4%;
+    text-align: left;
+}
+
+.card-dashboard-rodape{
+    height: 60px;
+    width: 97%;
+    background: white;
+    border: 0px solid black;
+    border-radius: 0px;
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+.card-dashboard a{
+    text-decoration: none;
+}
+
+.card-dashboard:hover{
+    border-left: 0px solid #483D8B;
+    color: white;
+}
+
+.card-dashboard-conteudo > h4{
+    font-size: 2rem;
+    color: white;
+    line-height: 0;
+    font-weight: bold;
+}
+
+.card-dashboard-conteudo > p{
+    color: white;
+    line-height: 0;
+    font-weight: 500;
+}
+
+/* ======================= rodape ======================= */
+
+.rodape{
+    margin-top: 1%;
+    height: 70px;
+    width: 100%;
+    background-color: #73c1a5;
+    opacity: 0.8;
+}
+
+.rodape-conteudo{
+    margin: 0 auto;
+    padding-top: 0.2%;
+    height: 70px;
+    width: 84%;
+    border: 0px solid black;
+    color: white;
+}
+
+/* ======================= lista menu ======================= */
+
+ul.menu-home{
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+    font-weight: bold;
+    color: #708090;
+    font-size: 10pt;
+}
+
+ul.menu-home > li{
+    display: inline-block;
+    padding-right: 1%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #708090;
+}
+
+ul.menu-home a {
+    color: #708090;
+    text-decoration: none;
+}
+
+ul.menu-home a:hover{
+    color: #2e3961;
+    border-bottom: 3px solid gray;
+}
+
+/* ======================= lista conatato ======================= */
+
+.contato{
+    padding: 4%;
+    width: 90%;
+    height: auto;
+}
+
+.contato > h2{
+    color: #2e3961;
+}
+
+.contato > h1{
+    color: #708090;
+}
+
+ul.lista-contato{
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+ul.lista-contato > li{
+    padding-right: 1%;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #708090;
+    line-height: 25px;
+}
+
+ul.lista-contato a {
+    color: gray;
+    text-decoration: none;
+}
+
+ul.lista-contato a:hover{
+    color: #483D8B;
+    border-bottom: 0px solid gray;
+}
+
+ul.lista-contato > h1{
+    color: #FF4500;
+}
+
+/* ======================= view detalhes ======================= */
+
+ul.lista-detalhes{
+    padding-left: 4%;
+    text-decoration: none;
+    font-weight: bold;
+    color: #708090;
+    font-size: 10pt;
+}
+
+ul.lista-detalhes > li{
+    display: block;
+    padding-right: 1%;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #708090;
+}
+
+ul.lista-detalhes a {
+    color: #708090;
+    text-decoration: none;
+}
+
+ul.lista-detalhes a:hover{
+    color: #483D8B;
+    border-bottom: 3px solid gray;
+}
+
+ul.lista-detalhes > li > p{
+    color: #00008B;
+}
+
+/* ======================= view produtos ======================= */
+
+.coluna-esq{
+    height: 130px;
+    width: 45%;
+    background: transparent;
+    border: 0px solid black;
+    border-radius: 2px;
+    float: left;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    padding: 1%;
+}
+
+.coluna-dir{
+    height: 130px;
+    width: 45%;
+    background: transparent;
+    border: 0px solid black;
+    border-radius: 2px;
+    float: right;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    padding: 1%;
+}
+
+.card-pesquisa{
+    margin: 1% auto;
+    margin-bottom: 1%;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 97.8%;
+    border: 0px solid black;
+    border-radius: 5px;
+    padding: 1%;
+    color: white;
+    background-color: #73c1a5;
+    opacity: 0.8;
+}
+
+.card-pesquisa > label{
+    color: white;
+}
+
+.card-titulo{
+    background: transparent;
+    border: 0px solid green;
+    padding-left: 0.5%;
+    line-height: 10px;
+    margin: 0 auto;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    height: auto;
+    width: 100%;
+    text-align: left;
+}
+
+.card-titulo > h1{
+    font-weight: bold;
+    color: gray;
+    font-size: 2rem;
+}
+
+
+.card-titulo > h2{
+    font-weight: bold;
+    color: gray;
+    font-size: 1.5rem;
+}
+
+.card-titulo > p{
+    color: #483D8B;
+}
+
+.card-form{
+    margin: 0% auto;
+    margin-bottom: 1%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    width: 99.6%;
+    background: white;
+    border: 1px solid #EEE;
+    border-radius: 2px;
+}
+
+.card-form > h4{
+    padding-left: 1%;
+    color: gray;
+    font-weight: bold;
+}
+
+.form-row{
+    width: 98%;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    border: 0px solid black;
+    padding: 1%;
+}
+
+.navbar{
+    width: 100%;
+    height: 80px;
+    border: 0px solid white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.form-row > h4{
+    padding-left: 0%;
+    color: gray;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.col-c{
+    height: auto;
+    width: 99.8%;
+    background: white;
+    border: 0px solid blue;
+    border-radius: 0px;
+    margin: 0%;
+    margin-bottom: 0%;
+    padding: 0%;
+}
+
+.col-e{
+    height: auto;
+    width: 48%;
+    background: transparent;
+    border: 0px solid red;
+    border-radius: 0px;
+    float: left;
+    margin-left: 0%;
+    margin-bottom: 0%;
+    padding: 0%;
+}
+
+.col-d{
+    height: auto;
+    width: 48%;
+    background: transparent;
+    border: 0px solid red;
+    border-radius: 0px;
+    float: right;
+    margin-right: 0%;
+    margin-bottom: 0%;
+    padding: 0%;
+}
+
+

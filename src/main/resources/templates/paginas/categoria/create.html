@@ -1,0 +1,61 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE CATEGORIA</h4>
+                </div>
+            </div>
+
+            <div class="card-form">
+                <form method="POST" th:object="${categoria}" th:action="@{/categorias/salvar}" autocomplete="off">
+
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-row">
+                        <label for="nome">Nome *</label>
+                        <input type="text" class="form-control" id="nome" th:field="*{nome}" 
+                               evolucao:classforerror="nome"
+                               placeholder="Nome da categoria" autofocus="autofocus">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="foto">Foto *</label>
+                        <input type="file" class="form-control" id="foto" th:field="*{foto}" 
+                               evolucao:classforerror="foto"
+                               placeholder="Anexar foto">
+                    </div>
+
+                    <br/>
+
+                    <div class="form-row">
+                        <label for="color">Cor *</label>
+                        <input type="color" class="form-control" id="color" th:field="*{color}" >
+                    </div>
+
+                    <br/>
+
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

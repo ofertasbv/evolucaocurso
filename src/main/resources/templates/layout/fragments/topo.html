@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+        <nav th:fragment="navbar">
+            <div class="topo">
+                <div class="topo-conteudo">
+                    <div class="topo-esquerdo">
+                        <a th:href="@{/}">
+                            <img alt="evolucão" th:src="@{/images/logo.png}" height="60" width="60"/>
+                        </a>
+                    </div>
+
+                    <div class="topo-centro">
+                        <span>EVOLUÇÃO CURSOS PROFISSIONALIZANTES</span>
+                    </div>
+
+                    <div class="topo-direita" style="text-align: right;">
+                        <a th:href="@{/usuarios/nova}" class="button-default-inline" style="color: white;">
+                            <i class="fas fa-edit"></i> MATRICULE-SE
+                        </a>
+                        <a th:href="@{/login}" class="button-default-inline" style="color: white;">
+                            <i class="fas fa-user"></i> ENTRAR
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </body>
+</html>

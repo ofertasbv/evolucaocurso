@@ -1,0 +1,154 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo">
+
+            <div class="card-form" style="background-image:linear-gradient(to right, gray, #D3D3D3);">
+
+                <div class="col-e" style="border-right: 0px dashed gray;min-height: 100%;overflow: hidden;">
+
+                    <div class="contato">
+                        <div class="form-row">
+
+                            <div style="text-align: left;font-size: 2rem;color: white;font-weight: 900;">
+                                <h1>FAÇA SUA EVOLUÇÃO</h1>
+                            </div>
+
+                            <div style="text-align: left;font-size: 2rem;color: black;font-weight: 900;height: auto; 
+                                 background: #bfbfbf;padding: 2%;border-radius: 5px;text-transform: uppercase;">
+                                <h1>[[${curso.nome}]]</h1>
+                            </div>
+
+                            <div style="padding: 2%;font-size: 1rem;color: #FFD700;text-align: left;font-weight: bold;">
+                                <span>MODALIDADE: [[${curso.modalidade}]]</span>
+                            </div>
+
+
+                            <div style="border: 0px solid black; height: 130px; width: 98%;padding: 1%;
+                                 background: #bfbfbf;border-radius: 5px;">
+                                <div <div style="border: 0px solid black; height: auto; width: 12%;float: left;margin-left: 1%;
+                                     padding: 6%;font-weight: bold;">
+                                    <p>POR R$</p>
+                                </div>
+
+                                <div <div style="border: 0px solid black; height: auto; width: 45%;float: left;margin-left: 1%;
+                                     font-size: 3rem; line-height: 0cm;text-height: font-size;padding: 0%;color: white;">
+                                    <h1> [[${curso.valor}]]</h1>  
+                                </div>
+
+                                <div <div style="border: 0px solid black; height: auto; width: 9%;float: left;
+                                     margin-left: 1%;padding: 6%;font-weight: bold;">
+                                    <p>/ MÊS</p>
+                                </div>
+                            </div>
+
+                            <div style="padding: 2%;font-size: 1.6rem;color: #330867;text-align: left;font-weight: bold;">
+                                <span>BOLETO, DÉBITO EM CONTA E CONTA DIGITAL</span>
+                            </div>
+
+                            <hr/>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-d">
+
+                    <div class="contato">
+                        <div class="form-row">
+                            <form method="POST" th:object="${pessoa}" th:action="@{/pessoas/inscricao}" autocomplete="off">
+
+                                <div class="form-row">
+                                    <div class="card-titulo">
+                                        <h2>INSCRIÇÃO ONLINE</h2>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <evolucao:message/>
+                                </div>
+
+                                <input type="hidden" th:field="*{id}"/>
+
+                                <div class="form-row">
+                                    <label for="nome">Nome completo *</label>
+                                    <input type="text" class="form-control" id="nome" th:field="*{nome}"
+                                           evolucao:classforerror="nome"
+                                           placeholder="Nome da pessoa" autofocus="autofocus" >
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="col-e">
+                                        <label for="telefone">Telefone (celular) *</label>
+                                        <input type="text" class="form-control js-phone-number" id="telefone" th:field="*{telefone}"
+                                               evolucao:classforerror="telefone"
+                                               onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"
+                                               placeholder="(99)99999-9999" autofocus="autofocus">
+                                    </div>
+
+                                    <div class="col-d">
+                                        <label for="cpf">Cpf *</label>
+                                        <input type="text" class="form-control" id="cpf" th:field="*{cpf}" 
+                                               evolucao:classforerror="cpf"
+                                               onkeydown="javascript: fMasc(this, mCPF);" maxlength="14"
+                                               placeholder="000.000.000-00">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="dataNascimento">Data Nascimento *</label>
+                                    <input type="date" class="form-control" id="dataNascimento" 
+                                           th:value="*{dataNascimento}" th:field="*{dataNascimento}"
+                                           evolucao:classforerror="dataNascimento"
+                                           placeholder="Data Nascimento" autofocus="autofocus">
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="email">Email *</label>
+                                    <input type="text" class="form-control" id="email" th:field="*{usuario.email}"
+                                           evolucao:classforerror="usuario.email"
+                                           placeholder="Email da pessoa" autofocus="autofocus">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-e">
+                                        <label for="senha">Senha *</label>
+                                        <input type="text" class="form-control" id="senha" th:field="*{usuario.senha}"  
+                                               evolucao:classforerror="usuario.senha"
+                                               placeholder="Senha da pessoa" autofocus="autofocus">
+                                    </div>
+
+
+                                    <div class="col-d">
+                                        <label for="confirmaSenha">Confirmação de senha *</label>
+                                        <input type="text" class="form-control" id="confirmaSenha" th:field="*{usuario.confirmaSenha}"
+                                               evolucao:classforerror="usuario.confirmaSenha"
+                                               placeholder="confirmaSenha">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row">
+                                    <button type="submit" class="button-success">Enviar formulário</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

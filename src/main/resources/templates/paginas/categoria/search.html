@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS PROFISSIONALIZANTES</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo">
+            <div class="card-titulo">
+                <h2>ÁREA DE CONHECIMENTOS</h2>
+                <p>TUDO O QUE VOCÊ PRECISA PARA ENTRAR NO MERCADO PROFISSIONAL</p>
+            </div>
+
+            <div class="conteudo-card">
+                <div class="card-categoria"  th:each="c: ${pagina.conteudo}" >
+                    <a th:href="@{/search/?nome=(categoria=${c.id})}">
+                        <div class="card-categoria-img">
+                            <img alt="evolucão" th:src="@{/images/default.jpg}" height="215" width="100%"/>
+                        </div>
+
+                        <div class="card-categoria-rodape" th:style="'background:'+@{${c.color}}+';'">
+                            <p th:text="${c.nome}"></p>
+                        </div>
+                    </a>
+                </div>
+                <div th:if="${pagina.vazia}">
+                    <p colspan="7">Nenhuma dados encontrados</p>
+                </div>
+            </div>
+
+            <evolucao:pagination page="${pagina}"/>
+        </section>
+    </body>
+</html>

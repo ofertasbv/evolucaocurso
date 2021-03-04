@@ -1,0 +1,55 @@
+
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo">
+
+            <div class="card-form">
+                <div class="form-row">
+                    <div class="col-e">
+                        <ul class="lista-detalhes">
+                            <li><h1>[[${categoria.nome}]]</h1></li>
+                        </ul> 
+                    </div>
+
+                    <div class="col-d" style="text-align: right;">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-form">
+                <div class="form-row">
+                    <div class="col-e">
+                        <div style="width: 90%; height: 500px;margin: 1% auto;">
+                            <img alt="evolucão" th:src="@{/images/default.jpg}" height="500" width="100%"/>
+                        </div>
+                    </div>
+
+                    <div class="col-d">
+                        <ul class="lista-detalhes">
+                            <li><h1>Cor</h1></li>
+                            <li><p>[[${categoria.color}]]</p></li>
+                        </ul>  
+
+                        <ul class="lista-detalhes">
+                            <li><h1>Foto de capa</h1></li>
+                            <li><p>[[${categoria.foto}]]</p></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

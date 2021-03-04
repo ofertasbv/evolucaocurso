@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <title>DASBOARD EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <link rel="icon" href="/images/logo.PNG" type="image/x-icon"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_home.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_form.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/layout/css/estilo_icons.css}"/>
+        <script th:src="@{/layout/js/all.js}"></script>
+        <script th:src="@{/layout/js/mascara.js}"></script>
+    </head>
+
+    <body>
+        <div th:replace="layout/fragments/topo :: navbar"></div>
+
+        <div th:replace="layout/fragments/menu_home :: menu-home"></div>
+
+        <div>
+            <section layout:fragment="conteudo-home"></section>
+        </div>
+
+        <div th:replace="layout/fragments/rodape :: footer"></div>
+
+    </body>
+</html>

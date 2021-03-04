@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/dashboard}"
+      xmlns:evolucao="http://brewer.algaworks.com">
+
+    <head>
+        <title>EVOLUÇÃO CURSOS</title>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    </head>
+
+    <body>
+        <section layout:fragment="conteudo-dashboard">
+            <div class="card-form">
+                <div class="form-row">
+                    <h4>CADASTRO DE MATRÍCULAS</h4>
+                </div>
+            </div>
+
+
+            <form method="POST" th:object="${matricula}" th:action="@{/matriculas/nova}" autocomplete="off">
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <evolucao:message/>
+                    </div>
+
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-row">
+                        <label for="descricao">Descricção* (matrícula = nome da turma + nome do aluno + ano atual)</label>
+                        <input type="text" class="form-control" id="descricao" th:field="*{descricao}" 
+                               evolucao:classforerror="descricao"
+                               placeholder="descricao da turma">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-e">
+                            <label for="turma">Turma *</label>
+                            <select id="turma" class="form-select" th:field="*{turma}" 
+                                    evolucao:classforerror="turma">
+                                <option value="">Selecione a turma </option>
+                                <option th:each="c : ${turmas}" th:value="${c.id}" th:text="${c.descricao}">Pale lager</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-d">
+                            <label for="usuario">Aluno *</label>
+                            <select id="usuario" class="form-select" th:field="*{usuario}" 
+                                    evolucao:classforerror="usuario">
+                                <option value="">Selecione o aluno </option>
+                                <option th:each="c : ${usuarios}" th:value="${c.id}" th:text="${c.nome}">Pale lager</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <h4>Configurações do sistema</h4>
+                    <div class="form-row">
+                        <div class="form-check">
+                            <input id="status" type="checkbox" class="form-check-input" th:field="*{status}"/>
+                            <label class="form-check-label" for="status">Matrícula ativa</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="novo" type="checkbox" class="form-check-input" th:field="*{novo}" />
+                            <label class="form-check-label" for="novo">Matrícula nova</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-form">
+                    <div class="form-row">
+                        <button type="submit" class="button-success">Enviar formulário</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>
